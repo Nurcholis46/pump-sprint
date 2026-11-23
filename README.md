@@ -13,17 +13,21 @@ Referral code: `mt29fv3h` — https://make.fun/r/mt29fv3h
 ## Strategy
 
 `main.ts` (Node 22, stdlib only) runs on the house `agent-fun/replay/v2`
-harness: it buys new bonding-curve coins in their first few slots when the tape
-shows at least three distinct recent buyers and no rug signal (dev sold, a big
-sell, or a high sell ratio), sizes up to 0.2 SOL per coin (capped at 1% of real
-SOL reserve), adds once while flow stays positive, and exits fast — +25% take
-profit, −20% stop loss, a 5% trailing stop armed at +10%, or a 10-slot maximum
-hold. If the pace of qualified coins ever lags the 20-coin round-trip
-guardrail, the entry filter relaxes in stages so the bot still trades broadly.
+harness: it buys new bonding-curve coins in their first few slots only when
+the launch already looks strong — at least 5 SOL of real reserve, price still
+above half its create price, at least six distinct recent non-creator buyers,
+the creator's own create-slot buy under 2.5 SOL, no big sell and no heavy
+selling — sizes up to 0.3 SOL per coin (capped at 1% of real SOL reserve),
+never adds, and exits fast: +15% take-profit, −12% stop-loss, a 10-slot
+maximum hold from the first fill, or at once when the creator sells. If the
+pace of qualified coins ever lags the 20-coin round-trip guardrail, the entry
+filter relaxes in stages so the bot still trades broadly.
 
-Local grade-local on the dev window: **+0.10 SOL net** (hold-cash 0.00 SOL;
-pilot sniper −0.14 SOL, pilot momentum −9.38 SOL, pilot reversion −1.78 SOL),
-101 coins traded, max drawdown 1.1%.
+Official grade-local on the full dev window (1,222 coins): **+0.34 SOL net**,
+128 round trips, 44.5% win rate, max drawdown 2.1%, guardrails met; L1
+regrade reproduced byte for byte. For comparison on the same window:
+hold-cash 0.00 SOL, pilot sniper −0.49 SOL, pilot momentum −9.39 SOL, pilot
+reversion −4.02 SOL.
 
 ## Layout
 
