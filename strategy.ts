@@ -6,7 +6,7 @@
 // ~2.7% (1.25% curve fees each way + a flat 105,000-lamport tx fee per
 // order), so the edge has to come from selection, not from holding or from
 // doubling down. This bot buys only launches that already look strong in
-// their first few slots — at least 5 SOL of real reserve, price still above
+// their first two slots — at least 5 SOL of real reserve, price still above
 // half its create price, at least six distinct recent non-creator buyers,
 // the creator's own create-slot buy under 2.5 SOL, no big sell and no heavy
 // selling — sizes up to 0.3 SOL per coin (capped at 1% of real SOL reserve),
@@ -64,7 +64,11 @@ export const DEFAULT_PARAMS: SniperParams = {
   minRealSolLamports: 5_000_000_000n,
   maxRealSolLamports: 30_000_000_000n,
   maxDevBuyLamports: 2_500_000_000n,
-  maxAgeSlots: 3,
+  // Tuned 23 Nov: enter only in a coin's first two slots (age 0-1). The dev
+  // window's edge lives in the earliest tape: age <= 1 lifts dev PnL from
+  // +0.337 to +0.476 SOL and the 70%-subsample stress median from +0.232 to
+  // +0.310 SOL (p10 -0.056 -> +0.098, losing copies 3/20 -> 0/20).
+  maxAgeSlots: 1,
   maxBuyers: 30,
   minRecentBuyers: 6,
   flowWindowSlots: 10,

@@ -13,7 +13,7 @@ Referral code: `mt29fv3h` — https://make.fun/r/mt29fv3h
 ## Strategy
 
 `main.ts` (Node 22, stdlib only) runs on the house `agent-fun/replay/v2`
-harness: it buys new bonding-curve coins in their first few slots only when
+harness: it buys new bonding-curve coins in their first two slots only when
 the launch already looks strong — at least 5 SOL of real reserve, price still
 above half its create price, at least six distinct recent non-creator buyers,
 the creator's own create-slot buy under 2.5 SOL, no big sell and no heavy
@@ -23,8 +23,8 @@ maximum hold from the first fill, or at once when the creator sells. If the
 pace of qualified coins ever lags the 20-coin round-trip guardrail, the entry
 filter relaxes in stages so the bot still trades broadly.
 
-Official grade-local on the full dev window (1,222 coins): **+0.34 SOL net**,
-128 round trips, 44.5% win rate, max drawdown 2.1%, guardrails met; L1
+Official grade-local on the full dev window (1,222 coins): **+0.48 SOL net**,
+105 round trips, 47% win rate, max drawdown 2.0%, guardrails met; L1
 regrade reproduced byte for byte. For comparison on the same window:
 hold-cash 0.00 SOL, pilot sniper −0.49 SOL, pilot momentum −9.39 SOL, pilot
 reversion −4.02 SOL.
